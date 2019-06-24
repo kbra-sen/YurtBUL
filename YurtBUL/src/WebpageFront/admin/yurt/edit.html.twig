@@ -1,0 +1,36 @@
+
+{% extends 'Adminbase.html.twig' %}
+{% block title %} Admin Panel {% endblock %}
+{% block content %}
+    <div id="page-wrapper" style="min-height: 565px;">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Yurt Listesi</h4> </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <h3 class="box-title"> Yurtlar  <small><a href="{{ path('admin_yurt_index') }}" class="btn btn-danger pull-right btn-sm   hidden-xs hidden-sm waves-effect waves-light"> Listeye Geri Dön</a></small>
+                        </h3>
+                        {{ include('admin/mesaj.html.twig') }}
+                        <div class="table-responsive">
+
+                            {{ include('admin/yurt/_editform.html.twig', {'button_label': 'Update'}) }}
+                            <script>
+                                ClassicEditor
+                                    .create( document.querySelector( '#editor' ) )
+                                    .catch( error => {
+                                        console.error( error );
+                                    } );
+                            </script>
+                            {{ include('admin/yurt/_delete_form.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

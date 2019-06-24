@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ayarlar{% endblock %}
+
+{% block content %}
+    <h1>Ayarlar</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ayarlar.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ ayarlar.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ ayarlar.description }}</td>
+            </tr>
+            <tr>
+                <th>Keywords</th>
+                <td>{{ ayarlar.keywords }}</td>
+            </tr>
+            <tr>
+                <th>Company</th>
+                <td>{{ ayarlar.company }}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ ayarlar.adress }}</td>
+            </tr>
+            <tr>
+                <th>Fax</th>
+                <td>{{ ayarlar.fax }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ ayarlar.phone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ ayarlar.email }}</td>
+            </tr>
+            <tr>
+                <th>Smtpserver</th>
+                <td>{{ ayarlar.smtpserver }}</td>
+            </tr>
+            <tr>
+                <th>Smtpemail</th>
+                <td>{{ ayarlar.smtpemail }}</td>
+            </tr>
+            <tr>
+                <th>Smtppassword</th>
+                <td>{{ ayarlar.smtppassword }}</td>
+            </tr>
+            <tr>
+                <th>Smptport</th>
+                <td>{{ ayarlar.smptport }}</td>
+            </tr>
+            <tr>
+                <th>Aboutus</th>
+                <td>{{ ayarlar.aboutus }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ ayarlar.contact }}</td>
+            </tr>
+            <tr>
+                <th>Referances</th>
+                <td>{{ ayarlar.referances }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ ayarlar.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_ayarlar_index') }}">back to list</a>
+
+    <a href="{{ path('admin_ayarlar_edit', {'id': ayarlar.id}) }}">edit</a>
+
+    {{ include('admin/ayarlar/_delete_form.html.twig') }}
+{% endblock %}

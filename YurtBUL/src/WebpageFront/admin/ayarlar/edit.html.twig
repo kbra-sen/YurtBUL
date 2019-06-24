@@ -1,0 +1,41 @@
+{% extends 'Adminbase.html.twig' %}
+
+{% block title %}Edit Ayarlar{% endblock %}
+
+{% block content %}
+
+    <div id="page-wrapper" style="min-height: 565px;">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Ayarlar</h4> </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+
+
+                        <div class="table-responsive">
+                            {{ include('admin/ayarlar/_form.html.twig', {'button_label': 'Update'}) }}
+
+                           {# <script>
+                                ClassicEditor
+                                    .create( document.querySelector( '#editor' ) )
+                                    .catch( error => {
+                                        console.error( error );
+                                    } );
+                            </script>#}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

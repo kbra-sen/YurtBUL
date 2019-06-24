@@ -1,0 +1,11 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}{{ veri[0].title }}{% endblock %}
+{% block keywords %}{{ veri[0].keywords }}{% endblock %}
+{% block description %}{{ veri[0].description }}{% endblock %}
+
+{% block main %} {{  include ('front/main_sayfa.html.twig')}} {% endblock %}
+{% block illeregore %} {{  include ('front/main_illere_gore.html.twig')}} {% endblock %}
+{% block yorumyaz %} {{  include ('front/main_yorum_yaz.html.twig')}} {% endblock %}
+{% block yorumlar %} {{  include ('front/main_yorumlar.html.twig')}} {% endblock %}
+

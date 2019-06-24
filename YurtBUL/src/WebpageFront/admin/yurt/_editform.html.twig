@@ -1,0 +1,132 @@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"
+        xmlns:text-transform="http://www.w3.org/1999/xhtml"></script>
+<form method="post">
+
+
+    <div class="form-group">
+        <label for="">Ad</label>
+        <input type="ad" name="yurt[title]" class="form-control" value="{{ yurt.title }}" id=" " aria-describedby="emailHelp" >
+    </div>
+    <div class="form-group">
+        <input type="hidden" name="yurt[image]" class="form-control" value="{{ yurt.image }}" id="" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+        <label for="">Kategori</label>
+        <select  name="yurt[categoryid]"  class="form-control ">
+            <option value="{{ yurt.categoryid }}" >{{ catname[0].title }}</option>
+
+            {% for cat in catlist %}
+                <option value="{{ cat.id }}" > {{ cat.title }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    {#<div class="form-group">
+
+        <label  for="">Müdür</label>
+            <div class="col-sm-20">
+            <select name="yurt[yursahibid]" class="form-control">
+                <option vale="{{ yurt.yursahibid }}">{{ listid[0].adsoyad}}</option>
+                {% for yurtt in mudurlist %}
+                    <option value="{{ yurtt.id }}" > {{ yurtt.adsoyad }}</option>
+                {% endfor %}
+
+            </select>
+        </div>
+    </div>
+    #}
+
+    <div class="form-group">
+        <label for="">Şehir</label>
+        {%for sehir in sehirlist %}
+            {% if(sehir.id== yurt.sehirid  ) %}
+                <input readonly class="form-control"  value="{{sehir.title }}" id="exampleInputPassword1"   >
+             <input type="hidden" class="form-control" name="yurt[sehirid]" value="{{ sehir.id }}" id="exampleInputPassword1" placeholder="{{ sehir.title}}" >
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        <label for="">İlçe</label>
+        {%for ilce in ilcelist %}
+            {% if(ilce.id== yurt.ilce) %}
+                <input readonly class="form-control"  value="{{ilce.title }}" id="exampleInputPassword1"   >
+                <input type="hidden" class="form-control" name="yurt[ilce]" value="{{ilce.id }}" id="exampleInputPassword1"   >
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="form-group">
+        <label for="">Adres</label>
+        <input type="" class="form-control" name="yurt[adres]" value="{{ yurt.adres }}" id="exampleInputPassword1"  >
+    </div>
+    <div class="form-group">
+        <label for="">Telefon</label>
+        <input type=" " name="yurt[telefon]" value="{{ yurt.telefon }}" class="form-control" id="" aria-describedby="emailHelp" placeholder="">
+    </div>
+   {#<div class="form-group">
+        <label for="">Tip</label><br>
+        <input type="radio" name="yurt[tipid]" value="1"  checked="on"> Kız
+        <input type="radio" name="yurt[tipid]" value="2"> Erkek<br>
+    </div>
+    <div class="form-group">
+        <label for="">Tür</label><br>
+        <input type="radio" name="yurt[turid]" value="1"  checked="on">Devlet
+        <input type="radio" name="yurt[turid]" value="2"> Özel<br>
+    </div>#}
+    <div class="form-group">
+        <label for="">Yıl</label>
+        <input type=" " name="yurt[yil]" value="{{ yurt.yil }}" class="form-control" id="" aria-describedby="emailHelp" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="">Fiyat</label>
+        <input type="ad" name="yurt[fiyat]" value="{{ yurt.fiyat}}" class="form-control" id="" aria-describedby="emailHelp" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="">WebPage</label>
+        <input type="ad" name="yurt[webpage]" value="{{ yurt.webpage }}" class="form-control" id="" aria-describedby="emailHelp" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="" >Açıklama</label><br>
+        <textarea  name="yurt[aciklama]"  value=" {{yurt.aciklama }}" id="editor" rows="10" cols="100">{{ yurt.aciklama }}</textarea>
+
+    </div>
+
+    <div class="form-group">
+        <label for="">Keyword</label>
+        <input type="ad" name="yurt[keyword]" value="{{ yurt.keyword}}" class="form-control" id="" aria-describedby="emailHelp" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="">Description</label>
+        <input type="ad" name="yurt[description]" value="{{ yurt.description }}" class="form-control" id="" aria-describedby="emailHelp" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="">Durum</label>
+        <input type="radio" name="yurt[durum]" value="true"  checked="on"> true
+        <input type="radio" name="yurt[durum]" value="false"> false<br>
+    </div>
+    <button type="submit" class="btn btn-primary  pull-left btn-sm">Kaydet</button>
+</form>
+
+
+<script type="text/javascript" >
+
+    $(document).ready(function () {
+        $("#ilce").hide();
+        $("#il").change(function () {
+            var ilid=$(this).val();
+
+            $.ajax({
+
+                type:"POST",
+                url:'/ilceler',
+
+                data:{'il': ilid},
+                success:function (e) {
+                    $("#ilce").show();
+                    $("#ilce").html(e);
+
+                }
+
+            })
+        })
+    })
+</script>

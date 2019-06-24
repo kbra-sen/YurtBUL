@@ -1,0 +1,83 @@
+{% extends 'Adminbase.html.twig' %}
+
+{% block title %}Ayarlar {% endblock %}
+{% block content %}
+    <div id="page-wrapper" style="min-height: 565px;">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Ayarlar</h4> </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <h3 class="box-title"> Ayarlar    </h3>
+
+                        <div class="table-responsive">
+                            <table class="table">
+
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Adı</th>
+                                    <th>Açıklama</th>
+                                    <th>Anahtar Kelimeler</th>
+                                    <th>Firma</th>
+                                    <th>Adres</th>
+                                    <th>Fax</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Smtpserver</th>
+                                    <th>Smtpemail</th>
+                                    <th>Smtppassword</th>
+                                    <th>Smptport</th>
+                                    <th>Aboutus</th>
+                                    <th>Contact</th>
+                                    <th>Referances</th>
+                                    <th>Status</th>
+                                    <th>actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for ayarlar in ayarlars %}
+                                    <tr>
+                                        <td>{{ ayarlar.id }}</td>
+                                        <td>{{ ayarlar.title }}</td>
+                                        <td>{{ ayarlar.description }}</td>
+                                        <td>{{ ayarlar.keywords }}</td>
+                                        <td>{{ ayarlar.company }}</td>
+                                        <td>{{ ayarlar.adress }}</td>
+                                        <td>{{ ayarlar.fax }}</td>
+                                        <td>{{ ayarlar.phone }}</td>
+                                        <td>{{ ayarlar.email }}</td>
+                                        <td>{{ ayarlar.smtpserver }}</td>
+                                        <td>{{ ayarlar.smtpemail }}</td>
+                                        <td>{{ ayarlar.smtppassword }}</td>
+                                        <td>{{ ayarlar.smptport }}</td>
+                                        <td>{{ ayarlar.aboutus }}</td>
+                                        <td>{{ ayarlar.contact }}</td>
+                                        <td>{{ ayarlar.referances }}</td>
+                                        <td>{{ ayarlar.status }}</td>
+                                        <td>
+
+                                            <a href="{{ path('admin_ayarlar_edit', {'id': ayarlar.id}) }}">edit</a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="18">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+

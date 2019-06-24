@@ -1,0 +1,62 @@
+{% extends 'Adminbase.html.twig' %}
+{% block title %}Admin Panel {% endblock %}
+{% block content %}
+    <div id="page-wrapper" style="min-height: 565px;">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Üye Detay </h4> </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <h3 class="box-title"> Üye Bilgisi <small><a href="{{ path('admin_yurt_sahibi_index') }}" class="btn btn-danger pull-right btn-sm   hidden-xs hidden-sm waves-effect waves-light"> Listeye Geri Dön</a></small>
+                        </h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <td>{{ yurt_sahibi.id }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Adsoyad</th>
+                                    <td>{{ yurt_sahibi.adsoyad }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>{{ yurt_sahibi.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Sifre</th>
+                                    <td>{{ yurt_sahibi.sifre }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Telefon</th>
+                                    <td>{{ yurt_sahibi.telefon }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Durum</th>
+                                    <td>{{ yurt_sahibi.durum }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Yurtid</th>
+                                    <td>{{ yurt_sahibi.yurtid }}</td>
+                                </tr>
+                                <tr>
+                                    <td> <small><a href="{{ path('admin_yurt_sahibi_edit', {'id': yurt_sahibi.id}) }}" class="btn btn-info btn-sm hidden-xs hidden-sm waves-effect waves-light"> Düzenle </a></small></td>
+                                    <td>  {{ include('admin/yurt_sahibi/_delete_form.html.twig') }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'Adminbase.html.twig' %}
+{% block title %} Admin Panel {% endblock %}
+{% block content %}
+    <div id="page-wrapper" style="min-height: 565px;">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Üye Listesi</h4> </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <h3 class="box-title"> Üyeler  <small><a href="{{ path('admin_user_index') }}" class="btn btn-danger pull-right btn-sm   hidden-xs hidden-sm waves-effect waves-light"> Listeye Geri Dön</a></small>
+                        </h3>
+
+                        <div class="table-responsive">
+
+                            <div class="form-group">
+                                <label for="">Fotograf</label><br>
+                                <form action="{{ path('admin_yurt_iupdate', {'id': id}) }}" method="post" enctype="multipart/form-data">
+                                    Fotoğraf Seç
+                                    <input name="yurtid" value="{{ id }}" type="number" readonly>
+                                    <input type="file" name="imname" id="fileToUpload"><br>
+                                    <input type="submit" value="Güncelle" name="submit">
+                                </form>
+                                {%  if yurt.image != null  %}
+                                    <img src="{{asset('guncelleme')}}/image/{{ yurt.image }}" >
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+
+<form method="post">
+
+    <div class="form-group">
+        <label for="">Ad</label>
+        <input type="ad" name="category[title]" class="form-control" id="" aria-describedby="emailHelp" placeholder="Ad">
+    </div>
+    <div class="form-group">
+        <label for="">Parentid</label>
+        <select  name="category[parentid]"  class="form-control ">
+            <option value="{{ category.parentid }}" >{{ category.parentid }}</option>
+            <option value="0"> Ana Kategori</option>
+            {% for cat in catlist %}
+                <option value="{{ cat.id }}" > {{ cat.title }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="">Keyword</label>
+        <input type="ad" name="category[keywords]" class="form-control" id="" aria-describedby="emailHelp" placeholder="Keyword">
+    </div>
+    <div class="form-group">
+        <label for="">Decription</label>
+        <input type="ad" name="category[Decription]" class="form-control" id="" aria-describedby="emailHelp" placeholder="Decription">
+    </div>
+    <div class="form-group">
+        <label for="">Durum</label>
+        <input type="radio" name="category[status]" value="true"  checked="on"> true
+        <input type="radio" name="category[status]" value="false"> false<br>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>

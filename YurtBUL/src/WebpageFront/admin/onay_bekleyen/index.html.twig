@@ -1,0 +1,80 @@
+{% extends 'Adminbase.html.twig' %}
+
+{% block title %} Yurtlar {% endblock %}
+{% block content %}
+    <div id="page-wrapper" style="min-height: 565px;">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Yurt Listesi</h4> </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Adı</th>
+                                    <th>Image</th>
+                                    <th>Galeri</th>
+                                    {#<th>Müdür</th>#}
+                                    <th>Kategorisi</th>
+                                    <th>Sehir</th>
+                                    <th>Telefon</th>
+                                    <th>Yıl</th>
+                                    <th>Fiyat</th>
+                                    <th>Webpage</th>
+                                    <th>Durum</th>
+                                    <th >Düzenle</th>
+                                    <th >Göster</th>
+
+                                    <th >Sil</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for onay in onaysiz %}
+                                    <tr>
+                                        <td>{{ onay.id }}</td>
+                                        <td>{{ onay.title }}</td>
+                                        <td><a HREF="javascript:openWin('{{ path('admin_yurt_iedit', {'id': yurt.id}) }}');">
+                                                {%  if yurt.image == null  %}
+                                                    Add image
+                                                {% else %}
+                                                    <img src="{{asset('guncelleme')}}/image/{{ yurt.image }}" height="48"><br>
+                                                    {{ " Yükle" }}
+                                                {% endif %}
+                                            </a></td>
+
+                                        <td><a HREF="javascript:openWin('{{ path('admin_image_new', {'yid': onay.id}) }}');">
+                                                <img src="{{asset('guncelleme')}}/image/galeri.png" height="48"><br>
+                                            </a></td>
+                                        {#  <td>{{ yurt.yursahibid }}</td>#}
+                                        <th>{{ onay.categoryid }}</th>
+                                        <td>{{ onay.sehirid }}</td>
+                                        <td>{{ onay.telefon }}</td>
+                                        <td>{{ onay.yil }}</td>
+                                        <td>{{ onay.fiyat }}</td>
+                                        <td>{{ onay.webpage }}</td>
+                                        <td>{{ onay.durum }}</td>
+                                        <td>  <a href="{{ path('admin_yurt_edit', {'id': yurt.id}) }}" class="btn btn-block btn-info btn-sm ">Düzenle</a></td>
+                                        <td> <a href="{{ path('admin_yurt_show', {'id': yurt.id}) }}" class=" btn btn-block btn-warning btn-sm  ">Göster</a></td>
+                                        <td> {{ include('admin/yurt/_delete_form.html.twig') }}</td>
+
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="18">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

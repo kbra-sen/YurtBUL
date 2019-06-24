@@ -1,0 +1,38 @@
+
+<form method="post">
+    <div class="form-group">
+
+        <input type="hidden" name="user[image]" class="form-control" value="usermid.png" id="" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+        <label for="">Ad soyad</label>
+        <input type="ad" name="user[name]" class="form-control" id="" aria-describedby="emailHelp" placeholder="Ad soyad gir">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email </label>
+        <input type="email" class="form-control" name="user[email]" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" name="user[password]" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Rol</label>
+        <select  name="user[roles]"  class="form-control is-invalid">
+            <option selected="">Tipi Seçin...</option>
+            <option>ROLE_ADMIN</option>
+            <option>ROLE_USER</option>
+            <option>ROLE_YURT</option>
+
+        </select>
+
+    </div>
+
+    <div class="form-group">
+        <label for="">Durum</label>
+        <input type="radio" name="user[status]" value="true"  checked="on"> true
+        <input type="radio" name="user[status]" value="false"> false<br>
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>

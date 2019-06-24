@@ -1,0 +1,7 @@
+<form action="{{ path('imagenew', {'id': id}) }}" method="post" enctype="multipart/form-data">
+    Fotoğraf Seç
+    <input name="yurtid" value="{{ id }}" type="hidden" readonly>
+    <input type="file" name="imname" id="fileToUpload">
+    <input type="submit" value="Güncelle" name="submit">
+    <br><br>
+</form>

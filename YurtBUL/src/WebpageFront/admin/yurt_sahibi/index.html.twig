@@ -1,0 +1,53 @@
+{% extends 'Adminbase.html.twig' %}
+{% block title %} Admin Panel {% endblock %}
+{% block content %}
+    <div id="page-wrapper" style="min-height: 565px;">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Yurt Sahipleri Listesi</h4> </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                         </h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Ad Soyadı</th>
+                                    <th>Email</th>
+                                    <th>Parola</th>
+                                    <th>Rol</th>
+                                    <th>Durum</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for yurt_sahibi in yurt_sahibis %}
+                                    <tr>
+                                        <td>{{ yurt_sahibi.id }}</td>
+                                        <td>{{ yurt_sahibi.name }}</td>
+                                        <td>{{ yurt_sahibi.email }}</td>
+                                        <td>{{ yurt_sahibi.password }}</td>
+                                        <td>{{ yurt_sahibi.roles|join }}</td>
+                                        <td>{{ yurt_sahibi.status }}</td>
+
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="11">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

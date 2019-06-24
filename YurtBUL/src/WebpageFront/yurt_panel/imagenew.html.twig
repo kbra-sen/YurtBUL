@@ -1,0 +1,14 @@
+
+
+
+<h1>Yeni Fotoğraf Ekle</h1>
+
+{{ include('admin/image/_form.html.twig') }}
+
+{% for image in imagelist %}
+    <img src="{{asset('guncelleme')}}/image/{{ image.image }}" height="200" >
+
+    <a href="{{ path('admin_image_del', {'id': image.id, 'yid': image.yurtid}) }}" onclick="return confirm('Silmek istediginizden emin misiniz?');"  class="btn btn-danger btn-sm ">sil</a>
+
+{% endfor %}
+

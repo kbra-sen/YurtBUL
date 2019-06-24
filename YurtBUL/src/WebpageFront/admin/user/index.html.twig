@@ -1,0 +1,81 @@
+{% extends 'Adminbase.html.twig' %}
+
+{% block title %} Üye Listesi {% endblock %}
+{% block content %}
+    <div id="page-wrapper" style="min-height: 565px;">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Üye Listesi</h4> </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <h3 class="box-title"> Üyeler  <small><a href="{{ path('admin_user_new') }}" class="btn btn-danger pull-right btn-sm  m-l-20 hidden-xs hidden-sm waves-effect waves-light">Üye ekle</a></small>
+                        </h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Fotograf</th>
+                                    <th>İsim</th>
+                                    <th>Email</th>
+                                    <th>Parola</th>
+                                    {#<th>Oluşturulma</th>
+                                    <th>Güncellenme</th>#}
+                                    <th>Rol</th>
+                                    <th>Durum</th>
+                                    <th >Göster</th>
+                                    <th >Düzenle</th>
+                                    <th >Sil</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for row in user %}
+                                    <tr>
+                                        <td scope="col" class="border-0">{{ row.id }}</td>
+                                        <td> <a HREF="javascript:openWin('{{ path('admin_user_iedit', {'id': row.id}) }}');">
+                                                {%  if row.image == null  %}
+                                                    <img src="{{asset('guncelleme')}}/image/usermid.png" height="48"><br>
+                                                    {{ "Fotograf Ekle" }}
+                                                {% else %}
+                                                    <img src="{{asset('guncelleme')}}/image/{{ row.image }}" height="48"><br>
+                                                    {{ "Fotograf Ekle" }}
+                                                {% endif %}
+                                            </a>
+                                        </td>
+
+                                        <td scope="col" class="border-0">{{ row.name }}</td>
+                                        <td scope="col" class="border-0">{{ row.email }}</td>
+                                        <td scope="col" class="border-0">{{ row.password }}</td>
+
+                                        <td scope="col" class="border-0">
+                                            {% for item in row.roles %}
+                                                {{ item }}
+                                            {% endfor %}
+                                        </td>
+
+                                        <td scope="col" class="border-0">{{ row.status }}</td>
+                                        <td> <a href="{{ path('admin_user_show', {'id': row.id}) }}" class=" btn btn-block btn-warning btn-sm  ">Göster</a></td>
+
+                                        <td>  <a href="{{ path('admin_user_edit', {'id': row.id}) }}" class="btn btn-block btn-info btn-sm ">Düzenle</a></td>
+                                        <td><a href="{{ path('admin_user_delete', {'id':row.id}) }}" class="btn btn-block btn-danger btn-sm " onclick="return confirm('Silinecek Emin Misiniz?')" class="mb-2 btn btn-outline-warning mr-2">Sil</a></td>
+
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="9">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

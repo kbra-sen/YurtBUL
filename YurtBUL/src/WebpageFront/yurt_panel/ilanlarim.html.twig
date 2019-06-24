@@ -1,0 +1,218 @@
+<!-- http://www.menucool.com/vertical/vertical-menu-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"
+        xmlns:text-transform="http://www.w3.org/1999/xhtml"></script>
+<form method="post">
+<SCRIPT LANGUAGE="JavaScript">
+
+    function openWin(URL) {
+        aWindow = window.open(URL,"composerwindow","toolbar=no,width=1000, height=500,status=no,scrollbars=yes,resize=no,menubar=no");
+    }
+</SCRIPT>
+<style>
+
+    .button4[type=submit] {
+        border-radius:12px;
+    }
+</style>
+<style>
+
+    ul#menu-v, #menu-v ul
+    {
+        width:200px; /* Main Menu width */
+        border:1px solid rgba(190,190,190,0.3);
+        list-style:none; margin:0; padding:0;
+        z-index:9;
+    }
+
+    #menu-v li
+    {
+        margin:0;padding:0;
+        position:relative;
+        background-color:#DDDDDD; /*fallback color*/
+        background-color:rgba(0,0,0,0.5);
+        transition:background 0.5s;
+    }
+    #menu-v li:hover
+    {
+        background-color:rgba(0,0,0,0.9);
+    }
+
+    #menu-v a
+    {
+        font:normal 12px Arial;
+        border-top:1px solid rgba(190,190,190,0.3);
+        display:block;
+        color:#EEEEEE;
+        text-decoration:none;
+        line-height:30px;
+        padding-left:22px;
+        position:relative;
+    }
+
+    #menu-v li:first-child a
+    {
+        border-top:0;
+    }
+
+    #menu-v a.arrow::after{
+        content:'';
+        position:absolute;
+        display:inline;
+        top:50%;
+        margin-top:-4px;
+        right:8px;
+        border-width:4px;
+        border-style:solid;
+        border-color:transparent transparent transparent white;
+        transition:border-color 0.5s;
+    }
+
+    #menu-v li a.arrow:hover::after
+    {
+        border-color:transparent transparent transparent #CCCCCC;
+    }
+
+    /*Sub level menu items
+    ---------------------------------------*/
+    #menu-v li ul
+    {
+        min-width:180px; /* Sub level menu min width */
+        position:absolute;
+        display:none;
+        left:100%;
+        top:50%; transform:translateY(-50%);
+    }
+
+    #menu-v li:hover > ul
+    {
+        display:block;
+    }
+</style>
+<section>
+    <div class="container" >
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar" >
+                    <h2>Bilgilerim</h2>
+                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        <ul id="menu-v">
+                            <li><a href="{{ path('yurtuser') }}">Profilim</a></li>
+                            <li><a href="{{ path('yurtuseredit') }} ">Bilgilerimi Güncelle</a></li>
+                            <li><a href="{{ path('yurtpanel') }}">Yurt İlanlarım</a></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+                <br><br><br><br><br><br>
+
+            </div>
+            <div class="col-sm-9 padding-right" >
+                <div class="features_items"><!--features_items-->
+                    <h2 class="title text-center">İlanlarım</h2>
+                    {{ include('admin/mesaj.html.twig') }}
+                    <a href="{{ path('yurtpaylas') }}" class="btn btn-danger pull-right btn-sm  m-l-20 hidden-xs hidden-sm waves-effect waves-light">Yurt İlan Ver</a></small>
+                    <br><br>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Fotograf Ekle</th>
+                                <th>Galeri</th>
+                                <th>Adı</th>
+
+                                <th>Kategorisi</th>
+                                <th>Sehir</th>
+                                <th>İlçe</th>
+                                 <th>Durum</th>
+                                <th >İlan Detayları</th>
+
+                                <th >Sil</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for deneme in dene %}
+                                <tr>
+                                    <td><a HREF="javascript:openWin('{{ path('yurtiedit', {'id': deneme.id}) }}');">
+                                            {%  if deneme.image == null  %}
+                                                {{ "Ekle" }}
+                                            {% else %}
+                                                 {{ " Değiştir" }}
+                                            {% endif %}
+                                        </a></td>
+                                    <td><a HREF="javascript:openWin('{{ path('imagenew', {'id': deneme.id}) }}');">
+                                            <img src="{{asset('guncelleme')}}/image/galeri.png" height="48"><br>
+                                        </a></td>
+                                    <td>{{ deneme.title }}</td>
+
+                                    {% for cats in  cat%}
+                                    {% if(deneme.categoryid == cats.id ) %}
+                                        <td>{{cats.title }}</td>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% for sehirs in  sehir %}
+                                        {% if(deneme.sehirid == sehirs.id ) %}
+                                            <td>{{sehirs.title }}</td>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% for ilces in  ilce %}
+                                        {% if(deneme.ilce == ilces.id ) %}
+                                            <td>{{ilces.title }}</td>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if(deneme.durum == "false") %}
+                                        <td >Beklemede </td>
+                                    {% else %}
+                                        <td >Onaylandı! </td>
+                                    {% endif %}
+                                  <td>  <a href="{{ path('yurtpaneledit', {'id': deneme.id}) }}" class="btn btn-block btn-info btn-sm ">Göster</a></td>
+                                    <td> {{ include('yurt_panel/_delete_form.html.twig') }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="18">Henüz Hiç İlanınız Yok</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" >
+
+    $(document).ready(function () {
+
+        $("#il").change(function () {
+            var ilid=$(this).val();
+            var tur = $('[name="tur"]:radio:checked').val();
+
+
+
+            $.ajax({
+
+                type:"POST",
+                url:'/ilceler',
+
+                data:{'il': ilid},
+                success:function (e) {
+                    $("#ilce").show();
+                    $("#ilce").html(e);
+
+                }
+
+            })
+        })
+    })
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#yeni' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

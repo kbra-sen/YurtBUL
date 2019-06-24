@@ -1,0 +1,52 @@
+{% extends 'Adminbase.html.twig' %}
+
+{% block title %}Kategoriler {% endblock %}
+{% block content %}
+    <div id="page-wrapper" style="min-height: 565px;">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Kategori Listesi</h4> </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Ad</th>
+                                <th>Email</th>
+                                <th>Konu</th>
+                                <th>Mesaj</th>
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for iletisim_mesaj in iletisim_mesajs %}
+                                <tr>
+                                    <td>{{ iletisim_mesaj.id }}</td>
+                                    <td>{{ iletisim_mesaj.ad }}</td>
+                                    <td>{{ iletisim_mesaj.email }}</td>
+                                    <td>{{ iletisim_mesaj.konu }}</td>
+                                    <td>{{ iletisim_mesaj.mesaj }}</td>
+
+
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="8">Mesaj Bulunamadı</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+

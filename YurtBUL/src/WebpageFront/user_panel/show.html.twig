@@ -1,0 +1,164 @@
+<!-- http://www.menucool.com/vertical/vertical-menu-->
+
+<style>
+
+    .button4[type=submit] {
+        border-radius:12px;
+    }
+</style>
+<style>
+
+    ul#menu-v, #menu-v ul
+    {
+        width:200px; /* Main Menu width */
+        border:1px solid rgba(190,190,190,0.3);
+        list-style:none; margin:0; padding:0;
+        z-index:9;
+    }
+
+    #menu-v li
+    {
+        margin:0;padding:0;
+        position:relative;
+        background-color:#DDDDDD; /*fallback color*/
+        background-color:rgba(0,0,0,0.5);
+        transition:background 0.5s;
+    }
+    #menu-v li:hover
+    {
+        background-color:rgba(0,0,0,0.9);
+    }
+
+    #menu-v a
+    {
+        font:normal 12px Arial;
+        border-top:1px solid rgba(190,190,190,0.3);
+        display:block;
+        color:#EEEEEE;
+        text-decoration:none;
+        line-height:30px;
+        padding-left:22px;
+        position:relative;
+    }
+
+    #menu-v li:first-child a
+    {
+        border-top:0;
+    }
+
+    #menu-v a.arrow::after{
+        content:'';
+        position:absolute;
+        display:inline;
+        top:50%;
+        margin-top:-4px;
+        right:8px;
+        border-width:4px;
+        border-style:solid;
+        border-color:transparent transparent transparent white;
+        transition:border-color 0.5s;
+    }
+
+    #menu-v li a.arrow:hover::after
+    {
+        border-color:transparent transparent transparent #CCCCCC;
+    }
+
+    /*Sub level menu items
+    ---------------------------------------*/
+    #menu-v li ul
+    {
+        min-width:180px; /* Sub level menu min width */
+        position:absolute;
+        display:none;
+        left:100%;
+        top:50%; transform:translateY(-50%);
+    }
+
+    #menu-v li:hover > ul
+    {
+        display:block;
+    }
+</style>
+<section>
+    <div class="container" >
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar" >
+                    <h2>Bilgilerim</h2>
+                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        <ul id="menu-v">
+                            <li><a href="{{ path('userpanel') }}">Profilim</a></li>
+                            <li><a href="{{ path('paneledit') }} ">Bilgilerimi Güncelle</a></li>
+                            <li><a href="{{ path('favorilerim_index') }}">Favorilerim</a></li>
+                            <li><a href="{{ path('user_yorum_index') }}">Yorumlarım</a></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+                <br><br><br><br><br><br>
+
+            </div>
+            <div class="col-sm-9 padding-right" >
+                <div class="features_items"><!--features_items-->
+                    <h2 class="title text-center">Profil Bilgisi</h2>
+                    {{ include('admin/mesaj.html.twig') }}
+                      <div class="col-sm-10">
+                            <ul>
+                                <li> <label for="email">Adı Soyadı:</label></li>
+                                <li><input  readonly type="ad" class="form-control"   value="{{ app.user.name }}"></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-10">
+                            <ul>
+                                <li> <label for="email">Email:</label></li>
+                                <li><input  readonly type="ad" class="form-control" id="email" value="{{ app.user.email }}"></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-10">
+                            <ul>
+                                <li> <label for="email">Roles:</label></li>
+                                <li><input  readonly type="ad" class="form-control" id="email" value="{{ app.user.roles|join }}"></li>
+                            </ul>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" >
+
+    $(document).ready(function () {
+
+        $("#il").change(function () {
+            var ilid=$(this).val();
+            var tur = $('[name="tur"]:radio:checked').val();
+
+
+
+            $.ajax({
+
+                type:"POST",
+                url:'/ilceler',
+
+                data:{'il': ilid},
+                success:function (e) {
+                    $("#ilce").show();
+                    $("#ilce").html(e);
+
+                }
+
+            })
+        })
+    })
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#yeni' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

@@ -1,0 +1,243 @@
+<!-- http://www.menucool.com/vertical/vertical-menu-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"
+        xmlns:text-transform="http://www.w3.org/1999/xhtml"></script>
+<style>
+
+    .button4[type=submit] {
+        border-radius:12px;
+    }
+</style>
+<style>
+
+    ul#menu-v, #menu-v ul
+    {
+        width:200px; /* Main Menu width */
+        border:1px solid rgba(190,190,190,0.3);
+        list-style:none; margin:0; padding:0;
+        z-index:9;
+    }
+
+    #menu-v li
+    {
+        margin:0;padding:0;
+        position:relative;
+        background-color:#DDDDDD; /*fallback color*/
+        background-color:rgba(0,0,0,0.5);
+        transition:background 0.5s;
+    }
+    #menu-v li:hover
+    {
+        background-color:rgba(0,0,0,0.9);
+    }
+
+    #menu-v a
+    {
+        font:normal 12px Arial;
+        border-top:1px solid rgba(190,190,190,0.3);
+        display:block;
+        color:#EEEEEE;
+        text-decoration:none;
+        line-height:30px;
+        padding-left:22px;
+        position:relative;
+    }
+
+    #menu-v li:first-child a
+    {
+        border-top:0;
+    }
+
+    #menu-v a.arrow::after{
+        content:'';
+        position:absolute;
+        display:inline;
+        top:50%;
+        margin-top:-4px;
+        right:8px;
+        border-width:4px;
+        border-style:solid;
+        border-color:transparent transparent transparent white;
+        transition:border-color 0.5s;
+    }
+
+    #menu-v li a.arrow:hover::after
+    {
+        border-color:transparent transparent transparent #CCCCCC;
+    }
+
+    /*Sub level menu items
+    ---------------------------------------*/
+    #menu-v li ul
+    {
+        min-width:180px; /* Sub level menu min width */
+        position:absolute;
+        display:none;
+        left:100%;
+        top:50%; transform:translateY(-50%);
+    }
+
+    #menu-v li:hover > ul
+    {
+        display:block;
+    }
+</style>
+<section>
+    <div class="container" >
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar" >
+                    <h2>Bilgilerim</h2>
+                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        <ul id="menu-v">
+                            <li><a href="{{ path('yurtuser') }}">Profilim</a></li>
+                            <li><a href="{{ path('paneledit') }}">Bilgilerimi Güncelle</a></li>
+                            <li><a href="{{ path('yurtpanel') }}">Yurt İlanlarım</a></li>
+
+
+                        </ul>
+                    </div>
+
+
+                </div>
+                <br><br><br><br><br><br>
+
+            </div>
+            <div class="col-sm-9 padding-right" >
+                <div class="features_items"><!--features_items-->
+                    <h2 class="title text-center">Yurt İlanı Ekle</h2>
+                    {{ include('admin/mesaj.html.twig') }}
+                    <a href="{{ path('yurtpanel') }}" class="btn btn-danger pull-right btn-sm  m-l-20 hidden-xs hidden-sm waves-effect waves-light">İlanlarıma Dön</a></small>
+
+                    <form action="" class="form-horizontal" method="post">
+
+                        <div class="col-sm-10">
+                            <ul>
+                                <li> <label for="email">Yurt Adı:</label></li>
+                                <li><input type="ad" class="form-control" id="email" placeholder="Yurt Adı" name="yurt[title]"></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-10">
+                            <ul>
+                                <li><label for="">Kategori</label></li>
+                                <li>
+                                    <select  name="yurt[categoryid]"  class="form-control ">
+                                        {% if(catname) %}
+                                            <option value="{{ yurt.categoryid }}" >{{ yurt.categoryid }}</option>
+                                        {% endif %}
+                                        {% for cat in catlist %}
+                                            <option value="{{ cat.id }}" > {{ cat.title }}</option>
+                                        {% endfor %}
+                                    </select>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-10">
+                            <ul>
+                                <li> <label for="">Şehir</label><br></li>
+                                <li>
+
+                                    <select id="il" name="yurt[sehirid]" class="form-control">
+                                        {% for sehir in sehirlist %}
+                                            <option value="{{ sehir.id }}" > {{ sehir.title }}</option>
+                                        {% endfor %}
+                                    </select>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-10">
+                            <ul>
+                                <li> <label for="">İlçe</label><br></li>
+                                <li>
+                                    <select name="yurt[ilce]" id="ilce" class="form-control">
+                                    </select>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-10">
+                            <ul>
+                                <li><label >Adres</label></li>
+                                <li><input type="" class="form-control" name="yurt[adres]" id="exampleInputPassword1" ></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-10">
+                            <ul>
+                                <li>   <label for="">Telefon</label></li>
+                                <li> <input type="ad" name="yurt[telefon]" class="form-control" id="" aria-describedby="emailHelp" placeholder=""></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-10">
+                            <ul>
+                                <li> <label for="">Yıl</label></li>
+                                <li><input type="ad" name="yurt[yil]" class="form-control" id="" aria-describedby="emailHelp" placeholder=""></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-10">
+                            <ul>
+                                <li><label for="">Fiyat</label></li>
+                                <li><input type="ad" name="yurt[fiyat]" class="form-control" id="" aria-describedby="emailHelp" placeholder=""></li>
+                            </ul>
+
+                        </div>
+
+                        <div class="col-sm-10">
+                            <ul>
+                                <li> <label for="" >Açıklama</label><br></li>
+                                <li><textarea  name="yurt[aciklama]"  id="yeni" rows="30" cols="100"></textarea></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-sm-10">
+                            <input  type="hidden" name="yurt[durum]" value="false"><br>
+                        </div>
+                        <div class="col-sm-10">
+                            <ul>
+                                <li> <label for="">WebPage</label></li>
+                                <li> <input type="ad" name="yurt[webpage]" class="form-control" id="" aria-describedby="emailHelp" placeholder="">  </li>
+                            </ul>
+
+                        </div>
+                        <input  type="hidden"  name="token" value="{{csrf_token('form-yurt') }}">
+                        <button type="submit" class="btn btn-primary  pull-right ">Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" >
+
+    $(document).ready(function () {
+
+        $("#il").change(function () {
+            var ilid=$(this).val();
+            var tur = $('[name="tur"]:radio:checked').val();
+
+
+
+            $.ajax({
+
+                type:"POST",
+                url:'/ilceler',
+
+                data:{'il': ilid},
+                success:function (e) {
+                    $("#ilce").show();
+                    $("#ilce").html(e);
+
+                }
+
+            })
+        })
+    })
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#yeni' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

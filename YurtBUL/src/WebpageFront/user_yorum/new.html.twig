@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New UserYorum{% endblock %}
+
+{% block body %}
+    <h1>Create new UserYorum</h1>
+
+    {{ include('user_yorum/_form.html.twig') }}
+
+    <a href="{{ path('user_yorum_index') }}">back to list</a>
+{% endblock %}

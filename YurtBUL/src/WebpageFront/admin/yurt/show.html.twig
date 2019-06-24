@@ -1,0 +1,99 @@
+{% extends 'Adminbase.html.twig' %}
+{% block title %} Admin Panel {% endblock %}
+{% block content %}
+    <div id="page-wrapper" style="min-height: 565px;">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Yurt Listesi</h4> </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <h3 class="box-title"> Yurt Bilgisi <small><a href="{{ path('admin_yurt_index') }}" class="btn btn-danger pull-right btn-sm   hidden-xs hidden-sm waves-effect waves-light"> Listeye Geri Dön</a></small>
+                        </h3>
+
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ yurt.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Yurt Adı</th>
+                                <td>{{ yurt.title }}</td>
+                            </tr>
+                            <tr>
+                                <th>Fotoğraf</th>
+                                <td>{{ yurt.image }}</td>
+                            </tr>
+                            <tr>
+                                <th>Yurt Sahibi</th>
+                                <td>{{ yurt.yursahibid }}</td>
+                            </tr>
+                            <tr>
+                                <th>Adres</th>
+                                <td>{{ yurt.adres }}</td>
+                            </tr>
+                            <tr>
+                                <th>Sehir </th>
+                                <td>{{ yurt.sehirid }}</td>
+                            </tr>
+                            <tr>
+                                <th>İlçe</th>
+                                <td>{{ yurt.ilce }}</td>
+                            </tr>
+                            <tr>
+                                <th>Telefon</th>
+                                <td>{{ yurt.telefon }}</td>
+                            </tr>
+                            <tr>
+                                <th>Tipi</th>
+                                <td>{{ yurt.tipid }}</td>
+                            </tr>
+                            <tr>
+                                <th>Türü</th>
+                                <td>{{ yurt.turid }}</td>
+                            </tr>
+                            <tr>
+                                <th>Yıl</th>
+                                <td>{{ yurt.yil }}</td>
+                            </tr>
+                            <tr>
+                                <th>Fiyat</th>
+                                <td>{{ yurt.fiyat }}</td>
+                            </tr>
+                            <tr>
+                                <th>Webpage</th>
+                                <td>{{ yurt.webpage }}</td>
+                            </tr>
+                            <tr>
+                                <th>Acıklama</th>
+                                <td>{{ yurt.aciklama }}</td>
+                            </tr>
+                            <tr>
+                                <th>Durum</th>
+                                <td>{{ yurt.durum }}</td>
+                            </tr>
+                            <tr>
+                                <th>Keyword</th>
+                                <td>{{ yurt.keyword }}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ yurt.description }}</td>
+                            </tr>
+                            <tr>
+                                <td> <small><a href="{{ path('admin_yurt_edit', {'id': yurt.id}) }}" class="btn btn-info btn-sm hidden-xs hidden-sm waves-effect waves-light"> Düzenle </a></small></td>
+                                <td>   {{ include('admin/yurt/_delete_form.html.twig') }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

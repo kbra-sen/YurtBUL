@@ -1,0 +1,391 @@
+<!-- http://www.menucool.com/vertical/vertical-menu-->
+<!DOCTYPE html>
+<!--
+Template Name: YurtBUL
+Author: <a href="http://www.os-templates.com/">OS Templates</a>
+Author URI: http://www.os-templates.com/
+Licence: Free to use under our free template licence terms
+Licence URI: http://www.os-templates.com/template-terms
+-->
+<html>
+<head>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset ('admin') }}/images/logoo.png">
+    <title>İlanlarım</title>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/layout/bootstrap.min.css" rel="stylesheet">
+    <link href="/layout/price-range.css" rel="stylesheet">
+    <link href="/layout/yenimain.css" rel="stylesheet">
+    <link href="/layout/acilir_menu.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"
+            xmlns:text-transform="http://www.w3.org/1999/xhtml"></script>
+
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- Top Background Image Wrapper -->
+<div class="bgded overlay" style="background-image:url('https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/07/26/Pictures/_60b7ed1a-90ec-11e8-90d0-8f805b857cc7.jpg');" >
+    <!-- ################################################################################################ -->
+    <div class="wrapper row1">
+        <header id="header" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <header id="header" class="hoc clear" style="margin-top: 20px">
+                <!-- ################################################################################################ -->
+                <div id="logo" class="fl_left">
+                    <h1><a href="/yurtekrani">YurtBUL\Yurt</a></h1>
+                </div>
+                <nav id="mainav" class="fl_right">
+                    <ul class="clear">
+                        <li><a href="/yurtekrani"><i class="fa fa-lg fa-home"></i></a></li>
+                        <li><a href="/view">Yurtlar</a></li>
+
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <li> <a  href=""> <img src="/images/kisi1.png" width="200" height="70"/>{{ app.user.name }}</a>
+                                <ul>
+                                    <li><a href="{{ path('yurtuser') }}" class="btn btn-danger btn-flat " >Profil</a></li>
+                                    <li> <a href="{{ path('app_logout') }}" class="btn btn-danger btn-flat ">Çıkış Yap</a></li>
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li ><a href="{{ path('app_login') }}">Giris Yap</a></li>
+                            <li ><a href="{{ path('kaydol') }}">Üye Ol</a></li>
+                        {% endif %}
+                        <li><a href=""> <img src="/images/b.png" width="200" height="70"  /></a>
+
+                            <ul>
+                                <li><a href="{{path('hakkimizda')}}">Hakkımızda</a></li>
+                                <li><a href="{{path('iletisim')}}">İletişim</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- ################################################################################################ -->
+            </header>
+        </header>
+    </div>
+    <div class="wrapper row2">
+        <div id="breadcrumb" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <ul>
+                <li><a href="/yurtekrani">Home</a></li>
+                <li><a href="/view">Yurtlar</a></li>
+
+            </ul>
+            <!-- ################################################################################################ -->
+        </div>
+    </div>
+</div>
+<style>
+
+    .button4[type=submit] {
+        border-radius:12px;
+    }
+</style>
+<style>
+
+    ul#menu-v, #menu-v ul
+    {
+        width:200px; /* Main Menu width */
+        border:1px solid rgba(190,190,190,0.3);
+        list-style:none; margin:0; padding:0;
+        z-index:9;
+    }
+
+    #menu-v li
+    {
+        margin:0;padding:0;
+        position:relative;
+        background-color:#DDDDDD; /*fallback color*/
+        background-color:rgba(0,0,0,0.5);
+        transition:background 0.5s;
+    }
+    #menu-v li:hover
+    {
+        background-color:rgba(0,0,0,0.9);
+    }
+
+    #menu-v a
+    {
+        font:normal 12px Arial;
+        border-top:1px solid rgba(190,190,190,0.3);
+        display:block;
+        color:#EEEEEE;
+        text-decoration:none;
+        line-height:30px;
+        padding-left:22px;
+        position:relative;
+    }
+
+    #menu-v li:first-child a
+    {
+        border-top:0;
+    }
+
+    #menu-v a.arrow::after{
+        content:'';
+        position:absolute;
+        display:inline;
+        top:50%;
+        margin-top:-4px;
+        right:8px;
+        border-width:4px;
+        border-style:solid;
+        border-color:transparent transparent transparent white;
+        transition:border-color 0.5s;
+    }
+
+    #menu-v li a.arrow:hover::after
+    {
+        border-color:transparent transparent transparent #CCCCCC;
+    }
+
+    /*Sub level menu items
+    ---------------------------------------*/
+    #menu-v li ul
+    {
+        min-width:180px; /* Sub level menu min width */
+        position:absolute;
+        display:none;
+        left:100%;
+        top:50%; transform:translateY(-50%);
+    }
+
+    #menu-v li:hover > ul
+    {
+        display:block;
+    }
+</style>
+<section>
+    <div class="container" >
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar" >
+                    <h2>Bilgilerim</h2>
+                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        <ul id="menu-v">
+                            <li><a href="{{ path('yurtuser') }}">Profilim</a></li>
+                            <li><a href="{{ path('yurtuseredit') }} ">Bilgilerimi Güncelle</a></li>
+                            <li><a href="{{ path('yurtpanel') }}">Yurt İlanlarım</a></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+                <br><br><br><br><br><br>
+
+            </div>
+            <div class="col-sm-9 padding-right" >
+                <div class="features_items"><!--features_items-->
+                    <h2 class="title text-center">İlan Detaylarım</h2>
+                    {{ include('admin/mesaj.html.twig') }}
+                  <a href="{{ path('yurtpanel') }}" class="btn btn-danger pull-right btn-sm   hidden-xs hidden-sm waves-effect waves-light"> İlanlarıma Geri Dön</a></small>
+
+                    <div class="col-sm-10">
+                        <ul>
+                            <li> <label for="email">Adı </label></li>
+                            <li><input  readonly type="ad" class="form-control"   value="{{ dene[0].title }}"></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-10">
+                        <ul>
+                            <li> <label for="email">Kategorisi </label></li>
+                            {% for cats in  cat%}
+                                {% if(dene[0].categoryid == cats.id ) %}
+                                    <li><input  readonly type="ad" class="form-control"   value="{{ cats.title }}"></li>
+                                {% endif %}
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                    <div class="col-sm-10">
+                        <ul>
+                            <li> <label for="email">Şehir </label></li>
+                            {% for sehirs in  sehir%}
+                                {% if(dene[0].sehirid == sehirs.id ) %}
+                                    <li><input  readonly type="ad" class="form-control"   value="{{ sehirs.title }}"></li>
+                                {% endif %}
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                    <div class="col-sm-10">
+                        <ul>
+                            <li> <label for="email">İlçe </label></li>
+                            {% for ilces in  ilce%}
+                                {% if(dene[0].ilce == ilces.id ) %}
+                                    <li><input  readonly type="ad" class="form-control"   value="{{ ilces.title }}"></li>
+                                {% endif %}
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                    <div class="col-sm-10">
+                        <ul>
+                            <li> <label for="email">Adres </label></li>
+                            <li><input  readonly type="ad" class="form-control"   value="{{ dene[0].adres }}"></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-10">
+                        <ul>
+                            <li> <label for="email">Telefon </label></li>
+                            <li><input  readonly type="ad" class="form-control"   value="{{ dene[0].telefon }}"></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-10">
+                        <ul>
+                            <li> <label for="email">Yıl </label></li>
+                            <li><input  readonly type="ad" class="form-control"   value="{{ dene[0].yil }}"></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-10">
+                        <ul>
+                            <li> <label for="email">Fiyat </label></li>
+                            <li><input  readonly type="ad" class="form-control"   value="{{ dene[0].fiyat  }}TL"></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-10">
+                        <ul>
+                            <li> <label for="email">WebPage </label></li>
+                            <li><input  readonly type="ad" class="form-control"   value="{{ dene[0].webpage }}"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="bgded overlay" style="background-image: url('https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/07/26/Pictures/_60b7ed1a-90ec-11e8-90d0-8f805b857cc7.jpg');">
+    <!-- ################################################################################################ -->
+    <div class="wrapper row4">
+        <footer id="footer" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <div class="btmspace-50 center">
+                <h2 class="heading">YurtBUL </h2>
+
+            </div>
+            <ul class="">
+                <ul class="nospace group">
+                    <li class="one_quarter first">
+                        <div class="infobox">
+                        </div>
+                    </li>
+
+                    <li class="one_quarter ">
+                        <div class="infobox"><i class="fa fa-support"></i>
+                            <ul class="nospace">
+                                <li><a href="{{path('hakkimizda')}}">Hakkımızda</a></li>
+                                <p>Firma Olarak Biz</p>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="one_quarter">
+                        <div class="infobox"><i class="fa fa-envelope-o"></i>
+                            <ul class="nospace">
+                                <li><a href="{{path('iletisim')}}">İletişim</a></li>
+                                <p>Bize Ulaşın</p>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="one_quarter">
+                        <div class="infobox">
+
+                        </div>
+                    </li>
+
+                </ul>
+            </ul>
+            <!-- ################################################################################################ -->
+        </footer>
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <nav class="quicklinks row4">
+        <ul class="hoc clear">
+            <li><a href="/yurtekrani"><i class="fa fa-lg fa-home"></i></a></li>
+            <li><a href="/view">Yurtlar</a></li>
+            <li><a href="{{ path('app_login') }}">Giriş</a></li>
+            <li><a href="{{ path('kaydol') }}">Üye Ol</a></li>
+
+        </ul>
+    </nav>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <div class="wrapper row5">
+        <div id="copyright" class="hoc clear">
+            <!-- ################################################################################################ -->
+
+            <!-- ################################################################################################ -->
+        </div>
+    </div>
+    <!-- ################################################################################################ -->
+</div>
+<!-- End Footer Background Image Wrapper -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="/layout/scripts/jquery.min.js"></script>
+<script src="/layout/scripts/jquery.backtotop.js"></script>
+<script src="/layout/scripts/jquery.mobilemenu.js"></script>
+<script src="/layout/scripts/js/jquery.js"></script>
+<script src="/layout/scripts/js/price-range.js"></script>
+<script src="/layout/scripts/js/jquery.scrollUp.min.js"></script>
+<script src="/layout/scripts/js/bootstrap.min.js"></script>
+<script src="/layout/scripts/js/jquery.prettyPhoto.js"></script>
+<script src="/layout/scripts/js/main.js"></script>
+
+
+
+
+<script type="text/javascript" >
+
+    $(document).ready(function () {
+
+        $("#il").change(function () {
+            var ilid=$(this).val();
+            var tur = $('[name="tur"]:radio:checked').val();
+
+
+
+            $.ajax({
+
+                type:"POST",
+                url:'/ilceler',
+
+                data:{'il': ilid},
+                success:function (e) {
+                    $("#ilce").show();
+                    $("#ilce").html(e);
+
+                }
+
+            })
+        })
+    })
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#yeni' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+</body>
+</html>

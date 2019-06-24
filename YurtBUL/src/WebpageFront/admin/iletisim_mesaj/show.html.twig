@@ -1,0 +1,46 @@
+{% extends 'Adminbase.html.twig' %}
+
+{% block title %}IletisimMesaj{% endblock %}
+
+{% block body %}
+    <h1>IletisimMesaj</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ iletisim_mesaj.id }}</td>
+            </tr>
+            <tr>
+                <th>Ad</th>
+                <td>{{ iletisim_mesaj.ad }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ iletisim_mesaj.email }}</td>
+            </tr>
+            <tr>
+                <th>Konu</th>
+                <td>{{ iletisim_mesaj.konu }}</td>
+            </tr>
+            <tr>
+                <th>Mesaj</th>
+                <td>{{ iletisim_mesaj.mesaj }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ iletisim_mesaj.comment }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ iletisim_mesaj.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_iletisim_mesaj_index') }}">back to list</a>
+
+    <a href="{{ path('admin_iletisim_mesaj_edit', {'id': iletisim_mesaj.id}) }}">edit</a>
+
+    {{ include('admin/iletisim_mesaj/_delete_form.html.twig') }}
+{% endblock %}

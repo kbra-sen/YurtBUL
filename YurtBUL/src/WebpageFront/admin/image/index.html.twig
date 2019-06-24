@@ -1,0 +1,52 @@
+{% extends 'Adminbase.html.twig' %}
+
+{% block title %}Shopping Admin Panel {% endblock %}
+{% block content %}
+    <div id="page-wrapper" style="min-height: 565px;">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Galeri</h4> </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+
+                        <div class="table-responsive">
+
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Yurtid</th>
+                                    <th>Image</th>
+                                    <th>actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for image in images %}
+                                    <tr>
+                                        <td>{{ image.id }}</td>
+                                        <td>{{ image.yurtid }}</td>
+                                        <td>{{ image.image }}</td>
+                                        <td>
+                                            <a href="{{ path('admin_image_show', {'id': image.id}) }}">show</a>
+                                            <a href="{{ path('admin_image_edit', {'id': image.id}) }}">edit</a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="4">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

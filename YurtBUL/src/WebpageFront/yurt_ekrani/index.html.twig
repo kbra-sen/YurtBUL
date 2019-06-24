@@ -1,0 +1,10 @@
+{% extends 'yurtbase.html.twig' %}
+
+{% block title %}{{ veri[0].title }}{% endblock %}
+{% block keywords %}{{ veri[0].keywords }}{% endblock %}
+{% block description %}{{ veri[0].description }}{% endblock %}
+
+{% block main %} {{  include ('yurt_ekrani/main_sayfa.html.twig')}} {% endblock %}
+{% block illeregore %} {{  include ('yurt_ekrani/main_illere_gore.html.twig')}} {% endblock %}
+{% block yorumyaz %} {{  include ('yurt_ekrani/main_yorum_yaz.html.twig')}} {% endblock %}
+{% block yorumlar %} {{  include ('yurt_ekrani/main_yorumlar.html.twig')}} {% endblock %}

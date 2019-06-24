@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!--
+Template Name: Boguco
+Author: <a href="http://www.os-templates.com/">OS Templates</a>
+Author URI: http://www.os-templates.com/
+Licence: Free to use under our free template licence terms
+Licence URI: http://www.os-templates.com/template-terms
+-->
+<html>
+<head>
+<title>Boguco</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body id="top">
+
+
+<!-- Top Background Image Wrapper -->
+<div class="bgded overlay" >
+
+
+    <div class="wrapper row0">
+        <header id="header" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <div id="logo" class="fl_left">
+                <h1><a href="index.html">Boguco</a></h1>
+            </div>
+            <nav id="mainav" class="fl_right">
+                <ul class="clear">
+                    <li><a href="index.html"><i class="fa fa-lg fa-home"></i></a></li>
+                    <li><a href="yurtlar.html">Yurtlar</a></li>
+                    <li><a href="apartlar.html">Apartlar</a></li>
+                    <li><a href="#">Giriş</a></li>
+                    <li><a href="#">Üye Ol</a></li>
+                </ul>
+            </nav>
+            <!-- ################################################################################################ -->
+        </header>
+<link href="layout/styles/form-wrapper cf.css" rel="stylesheet" type="text/css" media="all">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <!-- ################################################################################################ -->
+<form class="form-wrapper cf">
+    <input type="text" placeholder="Yurt/Apart,Şehir veya Bölge adı girin..." required>
+    <button type="submit">ARA</button>
+</form>
+    <div class="style">
+
+        <div class="mySlides fade">
+            <img src="https://yurtgercekleri.files.wordpress.com/2013/09/08.jpg" style="width:100%">
+
+        </div>
+        <div class="mySlides fade">
+            <img src="http://www.w3schools.com/howto/img_fjords_wide.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="http://www.w3schools.com/howto/img_mountains_wide.jpg" style="width:100%">
+        </div>
+    </div>
+    <div style="text-align:center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+    <script>
+        var slideIndex = 0;
+        showSlides();
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex> slides.length) {slideIndex = 1}
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 3000); // Bu alandan resimlerin geçiş süresini değiştirebilirsiniz.
+        }
+    </script>
+    <!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+</div>
+
+<!-- End Top Background Image Wrapper -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row3">
+    <section class="hoc container clear">
+        <!-- ################################################################################################ -->
+        <div class="btmspace-50 center">
+            <h2>İllere Göre En İyiler</h2>
+            <p>Mattis donec et laoreet urna vitae maximus elit quisque interdum nisl</p>
+        </div>
+        <ul class="nospace group">
+            <li class="one_third first">
+                <article class="excerpt"><a href="#"><img class="inspace-10 borderedbox" src="images/demo/320x220.png" alt=""></a>
+                    <div class="excerpttxt">
+                        <ul>
+                            <li><i class="fa fa-calendar-o"></i> 06/01/45</li>
+                            <li><i class="fa fa-comments"></i> <a href="#">4</a></li>
+                        </ul>
+                        <h6 class="heading font-x1">Magna ut ultrices tellus maecenas bibendum&hellip;</h6>
+                        <p><a href="#">Read More &raquo;</a></p>
+                    </div>
+                </article>
+            </li>
+            <li class="one_third">
+                <article class="excerpt"><a href="#"><img class="inspace-10 borderedbox" src="images/demo/320x220.png" alt=""></a>
+                    <div class="excerpttxt">
+                        <ul>
+                            <li><i class="fa fa-calendar-o"></i> 05/01/45</li>
+                            <li><i class="fa fa-comments"></i> <a href="#">4</a></li>
+                        </ul>
+                        <h6 class="heading font-x1">Est molestie sed aliquam lobortis lacinia mauris&hellip;</h6>
+                        <p><a href="#">Read More &raquo;</a></p>
+                    </div>
+                </article>
+            </li>
+            <li class="one_third">
+                <article class="excerpt"><a href="#"><img class="inspace-10 borderedbox" src="images/demo/320x220.png" alt=""></a>
+                    <div class="excerpttxt">
+                        <ul>
+                            <li><i class="fa fa-calendar-o"></i> 04/01/45</li>
+                            <li><i class="fa fa-comments"></i> <a href="#">4</a></li>
+                        </ul>
+                        <h6 class="heading font-x1">Volutpat leo a viverra venenatis integer dictum&hellip;</h6>
+                        <p><a href="#">Read More &raquo;</a></p>
+                    </div>
+                </article>
+            </li>
+        </ul>
+        <br><br>
+        <div class="right btmspace-80">
+            <footer><a class="btn" href="#">Tümü</a></footer>
+        </div>
+        <!-- ################################################################################################ -->
+    </section>
+</div>
+
+<div class="wrapper bgded overlay" style="background-image:url('images/demo/backgrounds/04.png');">
+    <article class="hoc container clear">
+        <!-- ################################################################################################ -->
+        <div class="three_quarter first">
+            <h6 class="nospace">Curabitur ornare imperdiet</h6>
+            <p class="nospace">Nibh eu sagittis etiam ut euismod ligula laoreet lacus nunc quis tortor tempor</p>
+        </div>
+        <footer class="one_quarter"><a class="btn" href="#">More Information &raquo;</a></footer>
+        <!-- ################################################################################################ -->
+    </article>
+</div>
+
+
+<div class="wrapper row3" >
+    <main class="hoc container clear">
+        <!-- main body -->
+        <!-- ################################################################################################ -->
+        <div class="center btmspace-80">
+            <h3 class="heading">YORUMLAR</h3>
+        </div>
+        <ul class="nospace group services">
+            <li class="one_third first">
+                <article><a href="#"><i class="em em-female_elf"></i></a>
+                    <h6 class="heading">Ayşe Karadağ</h6>
+                    <p>Bu yurt harika!Arcu dignissim interdum quis vel est aenean hendrerit lacus &hellip;</p>
+                    <footer><a href="#">Read More &raquo;</a></footer>
+                </article>
+            </li>
+            <li class="one_third">
+                <article><a href="#"><i class="em em-person_frowning"></i></a>
+                    <h6 class="heading">Meltem Aydın</h6>
+                    <p>Yemekler çok kötü!Arcu dignissim interdum quis vel est aenean hendrerit lacus &hellip;</p>
+                    <footer><a href="#">Read More &raquo;</a></footer>
+                </article>
+            </li>
+            <li class="one_third">
+                <article><a href="#"><i class="em em-man-pouting"></i></a>
+                    <h6 class="heading">Talha Şen</h6>
+                    <p>Okula uzak ama modern!Arcu dignissim interdum quis vel est aenean hendrerit lacus &hellip;</p>
+                    <footer><a href="#">Read More &raquo;</a></footer>
+                </article>
+            </li>
+            <li class="one_third first">
+                <article><a href="#"><i class="em em-woman-pouting"></i></a>
+                    <h6 class="heading">Derya Türk</h6>
+                    <p> Tavsiye ederim!Arcu dignissim interdum quis vel est aenean hendrerit lacus &hellip;</p>
+                    <footer><a href="#">Read More &raquo;</a></footer>
+                </article>
+            </li>
+            <li class="one_third">
+                <article><a href="#"><i class="em em-man-frowning"></i></a>
+                    <h6 class="heading">Ali Aslan</h6>
+                    <p>Fiyatına göre iyi bir apart.Arcu dignissim interdum quis vel est aenean hendrerit lacus &hellip;</p>
+                    <footer><a href="#">Read More &raquo;</a></footer>
+                </article>
+            </li>
+            <li class="one_third">
+                <article><a href="#"><i class="em em-woman-pouting"></i></a>
+                    <h6 class="heading">Mauris proin venenatis</h6>
+                    <p>Arcu dignissim interdum quis vel est aenean hendrerit lacus non nisl iaculis sed suscipit&hellip;</p>
+                    <footer><a href="#">Read More &raquo;</a></footer>
+                </article>
+            </li>
+        </ul>
+        <br>
+        <div class="right btmspace-80">
+            <footer><a class="btn" href="#">Tüm Yorumlar</a></footer>
+        </div>
+        <!-- ################################################################################################ -->
+        <!-- / main body -->
+        <div class="clear"></div>
+    </main>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- Footer Background Image Wrapper -->
+<div class="bgded overlay" style="background-image:url('images/demo/backgrounds/04.png');"> 
+  <!-- ################################################################################################ -->
+  <div class="wrapper row4">
+    <footer id="footer" class="hoc clear"> 
+      <!-- ################################################################################################ -->
+      <div class="btmspace-50 center">
+        <h2 class="heading">dui eu laoreet aenean non</h2>
+        <p>dapibus lacus phasellus quis ligula ut libero venenatis scelerisque</p>
+      </div>
+      <ul class="nospace group">
+        <li class="one_quarter first">
+          <div class="infobox"><i class="fa fa-phone"></i>
+            <ul class="nospace">
+              <li>+00 (123) 456 7890</li>
+              <li>+00 (123) 456 7890</li>
+            </ul>
+          </div>
+        </li>
+        <li class="one_quarter">
+          <div class="infobox"><i class="fa fa-envelope-o"></i>
+            <ul class="nospace">
+              <li><a href="#">info@domain.com</a></li>
+              <li><a href="#">sales@domain.com</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="one_quarter">
+          <div class="infobox"><i class="fa fa-clock-o"></i>
+            <ul class="nospace">
+              <li>Mon - Fri: 9 to 5.00pm</li>
+              <li>Sat: 9 to 1.00pm</li>
+            </ul>
+          </div>
+        </li>
+        <li class="one_quarter">
+          <div class="infobox"><i class="fa fa-support"></i>
+            <ul class="nospace">
+              <li><a href="#">Online Support</a></li>
+              <li><a href="#">Live Chat</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <!-- ################################################################################################ -->
+    </footer>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <nav class="quicklinks row4">
+    <ul class="hoc clear">
+      <li><a href="#"><i class="fa fa-lg fa-home"></i></a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">Shop</a></li>
+    </ul>
+  </nav>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row5">
+    <div id="copyright" class="hoc clear"> 
+      <!-- ################################################################################################ -->
+      <p class="fl_left">Copyright &copy; 2016 - All Rights Reserved - <a href="#">Domain Name</a></p>
+      <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+  <!-- ################################################################################################ -->
+</div>
+<!-- End Footer Background Image Wrapper -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="layout/scripts/jquery.min.js"></script>
+<script src="layout/scripts/jquery.backtotop.js"></script>
+<script src="layout/scripts/jquery.mobilemenu.js"></script>
+<script src="layout/scripts/jquery.flexslider-min.js"></script>
+</body>
+</html>

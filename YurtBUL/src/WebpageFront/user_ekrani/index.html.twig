@@ -1,0 +1,10 @@
+{% extends 'userbase.html.twig' %}
+
+{% block title %}{{ veri[0].title }}{% endblock %}
+{% block keywords %}{{ veri[0].keywords }}{% endblock %}
+{% block description %}{{ veri[0].description }}{% endblock %}
+
+{% block main %} {{  include ('user_ekrani/main_sayfa.html.twig')}} {% endblock %}
+{% block illeregore %} {{  include ('user_ekrani/main_illere_gore.html.twig')}} {% endblock %}
+{% block yorumyaz %} {{  include ('user_ekrani/main_yorum_yaz.html.twig')}} {% endblock %}
+{% block yorumlar %} {{  include ('user_ekrani/main_yorumlar.html.twig')}} {% endblock %}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--
+Template Name: YurtBUL
+Author: <a href="http://www.os-templates.com/">OS Templates</a>
+Author URI: http://www.os-templates.com/
+Licence: Free to use under our free template licence terms
+Licence URI: http://www.os-templates.com/template-terms
+-->
+<html>
+<head>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset ('admin') }}/images/logoo.png">
+    <title>Bilgilerim</title>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/layout/bootstrap.min.css" rel="stylesheet">
+    <link href="/layout/price-range.css" rel="stylesheet">
+    <link href="/layout/yenimain.css" rel="stylesheet">
+    <link href="/layout/acilir_menu.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"
+            xmlns:text-transform="http://www.w3.org/1999/xhtml"></script>
+
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- Top Background Image Wrapper -->
+<div class="bgded overlay" style="background-image:url('https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/07/26/Pictures/_60b7ed1a-90ec-11e8-90d0-8f805b857cc7.jpg');" >
+    <!-- ################################################################################################ -->
+    <div class="wrapper row1">
+        <header id="header" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <header id="header" class="hoc clear" style="margin-top: 20px">
+                <!-- ################################################################################################ -->
+                <div id="logo" class="fl_left">
+                    <h1><a href="/userekrani">YurtBUL|User</a></h1>
+                </div>
+                <nav id="mainav" class="fl_right">
+                    <ul class="clear">
+                        <li><a href="/userekrani"><i class="fa fa-lg fa-home"></i></a></li>
+                        <li><a href="/view">Yurtlar</a></li>
+
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <li> <a  href=""> <img src="/images/kisi1.png" width="200" height="70"/>{{ app.user.name }}</a>
+                                <ul>
+                                    <li><a href="{{ path('userpanel') }}" class="btn btn-danger btn-flat " >Profil</a></li>
+                                    <li> <a href="{{ path('app_logout') }}" class="btn btn-danger btn-flat ">Çıkış Yap</a></li>
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li ><a href="{{ path('app_login') }}">Giris Yap</a></li>
+                            <li ><a href="{{ path('kaydol') }}">Üye Ol</a></li>
+                        {% endif %}
+                        <li><a href=""> <img src="/images/b.png" width="200" height="70"  /></a>
+
+                            <ul>
+                                <li><a href="{{path('hakkimizda')}}">Hakkımızda</a></li>
+                                <li><a href="{{path('iletisim')}}">İletişim</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- ################################################################################################ -->
+            </header>
+        </header>
+    </div>
+    <div class="wrapper row2">
+        <div id="breadcrumb" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <ul>
+                <li><a href="/userekrani">Home</a></li>
+                <li><a href="/view">Yurtlar</a></li>
+
+            </ul>
+            <!-- ################################################################################################ -->
+        </div>
+    </div>
+</div>
+<!-- ################################################################################################ -->
+
+
+{{ include("user_panel/show.html.twig") }}
+
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- Footer Background Image Wrapper -->
+<div class="bgded overlay" style="background-image: url('https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/07/26/Pictures/_60b7ed1a-90ec-11e8-90d0-8f805b857cc7.jpg');">
+    <!-- ################################################################################################ -->
+    <div class="wrapper row4">
+        <footer id="footer" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <div class="btmspace-50 center">
+                <h2 class="heading">YurtBUL </h2>
+
+            </div>
+            <ul class="">
+                <ul class="nospace group">
+                    <li class="one_quarter first">
+                        <div class="infobox">
+                        </div>
+                    </li>
+
+                    <li class="one_quarter ">
+                        <div class="infobox"><i class="fa fa-support"></i>
+                            <ul class="nospace">
+                                <li><a href="{{path('hakkimizda')}}">Hakkımızda</a></li>
+                                <p>Firma Olarak Biz</p>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="one_quarter">
+                        <div class="infobox"><i class="fa fa-envelope-o"></i>
+                            <ul class="nospace">
+                                <li><a href="{{path('iletisim')}}">İletişim</a></li>
+                                <p>Bize Ulaşın</p>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="one_quarter">
+                        <div class="infobox">
+
+                        </div>
+                    </li>
+
+                </ul>
+            </ul>
+            <!-- ################################################################################################ -->
+        </footer>
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <nav class="quicklinks row4">
+        <ul class="hoc clear">
+            <li><a href="/front"><i class="fa fa-lg fa-home"></i></a></li>
+            <li><a href="/view">Yurtlar</a></li>
+
+
+        </ul>
+    </nav>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <div class="wrapper row5">
+        <div id="copyright" class="hoc clear">
+            <!-- ################################################################################################ -->
+
+            <!-- ################################################################################################ -->
+        </div>
+    </div>
+    <!-- ################################################################################################ -->
+</div>
+<!-- End Footer Background Image Wrapper -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="/layout/scripts/jquery.min.js"></script>
+<script src="/layout/scripts/jquery.backtotop.js"></script>
+<script src="/layout/scripts/jquery.mobilemenu.js"></script>
+<script src="/layout/scripts/js/jquery.js"></script>
+<script src="/layout/scripts/js/price-range.js"></script>
+<script src="/layout/scripts/js/jquery.scrollUp.min.js"></script>
+<script src="/layout/scripts/js/bootstrap.min.js"></script>
+<script src="/layout/scripts/js/jquery.prettyPhoto.js"></script>
+<script src="/layout/scripts/js/main.js"></script>
+</body>
+</html>
+

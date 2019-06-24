@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+<link rel="icon" type="image/png" sizes="16x16" href="{{ asset ('admin') }}/images/logoo.png">
+{% block title %}Favorilerim{% endblock %}
+
+{% block body %}
+    <h1>Favorilerim</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ favorilerim.id }}</td>
+            </tr>
+            <tr>
+                <th>Userid</th>
+                <td>{{ favorilerim.userid }}</td>
+            </tr>
+            <tr>
+                <th>Yurtid</th>
+                <td>{{ favorilerim.yurtid }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('favorilerim_index') }}">back to list</a>
+
+    <a href="{{ path('favorilerim_edit', {'id': favorilerim.id}) }}">edit</a>
+
+    {{ include('favorilerim/_delete_form.html.twig') }}
+{% endblock %}

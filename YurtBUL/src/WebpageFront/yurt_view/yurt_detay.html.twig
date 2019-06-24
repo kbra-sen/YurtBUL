@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!--
+Template Name: Boguco
+Author: <a href="http://www.os-templates.com/">OS Templates</a>
+Author URI: http://www.os-templates.com/
+Licence: Free to use under our free template licence terms
+Licence URI: http://www.os-templates.com/template-terms
+-->
+<html>
+<head>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset ('admin') }}/images/logoo.png">
+    <title>{{ veri[0].title }} </title>
+    {% block keywords %}{{ veri[0].keywords }}{% endblock %}
+    {% block description %}{{ veri[0].description }}{% endblock %}
+
+    <meta charset="utf-8">
+    <meta name="YurtBULport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <link href="../layout/bootstrap.min.css" rel="stylesheet">
+    <link href="../layout/price-range.css" rel="stylesheet">
+    <link href="../layout/yenimain.css" rel="stylesheet">
+    <link href="../layout/acilir_menu.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"
+            xmlns:text-transform="http://www.w3.org/1999/xhtml"></script>
+
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
+
+    <link href="../css/bootstrap.min1.css" rel="stylesheet">
+    <link href="../css/bootstrap1.css" rel="stylesheet">
+    <link href="../css/bootstrap-responsive.min1.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive1.css" rel="stylesheet">
+
+
+
+
+
+
+
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- Top Background Image Wrapper -->
+<div class="bgded overlay" style="background-image:url('https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/07/26/Pictures/_60b7ed1a-90ec-11e8-90d0-8f805b857cc7.jpg');" >
+    <!-- ################################################################################################ -->
+    <div class="wrapper row1">
+        <header id="header" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <header id="header" class="hoc clear" style="margin-top: 20px">
+                <!-- ################################################################################################ -->
+                <div id="logo" class="fl_left">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {% if is_granted(expression( '"ROLE_USER" in roles')) %}
+                            <h1><a href="/userekrani">Boguco/User</a></h1>
+                        {% elseif is_granted(expression( '"ROLE_ADMIN" in roles')) %}
+                            <h1><a href="/front">Boguco</a></h1>
+                        {% elseif is_granted(expression( '"ROLE_YURT" in roles')) %}
+                            <h1><a href="/yurtekrani/Yurt">Boguco</a></h1>
+                        {% endif %}
+                    {% else %}
+                        <h1><a href="/front">Boguco</a></h1>
+                    {% endif %}
+                </div>
+                <nav id="mainav" class="fl_right">
+                    <ul class="clear">
+                        <li>{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                {% if is_granted(expression( '"ROLE_USER" in roles')) %}
+                                    <a href="/userekrani"><i class="fa fa-lg fa-home"></i></a>
+                                {% elseif is_granted(expression( '"ROLE_ADMIN" in roles')) %}
+                                    <a href="/front"><i class="fa fa-lg fa-home"></i></a>
+                                {% elseif is_granted(expression( '"ROLE_YURT" in roles')) %}
+                                    <a href="/yurtekrani"><i class="fa fa-lg fa-home"></i></a>
+                                {% endif %}
+                            {% else %}
+                                <a href="/front"><i class="fa fa-lg fa-home"></i></a>
+                            {% endif %}</li>
+                        <li><a href="/YurtBUL">Yurtlar</a></li>
+
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            {% if is_granted(expression( '"ROLE_USER" in roles')) %}
+
+                                <li> <a  href=""> <img src="../images/kisi1.png" width="200" height="70"/>{{ app.user.name }}</a>
+                                    <ul>
+                                        <li><a href="{{ path('userpanel') }}" class="btn btn-danger btn-flat " >Profil</a></li>
+                                        <li> <a href="{{ path('app_logout') }}" class="btn btn-danger btn-flat ">Çıkış Yap</a></li>
+                                    </ul>
+                                </li>
+                            {% elseif is_granted(expression( '"ROLE_ADMIN" in roles')) %}
+                                <li> <a href="{{ path('app_logout') }}" >Admin Çıkışı</a></li>
+
+                            {% elseif is_granted(expression( '"ROLE_YURT" in roles')) %}
+
+                                <li> <a  href=""> <img src="../images/kisi1.png" width="200" height="70"/>{{ app.user.name }}</a>
+                                    <ul>
+                                        <li><a href="{{ path('yurtuser') }}" class="btn btn-danger btn-flat " >Profil</a></li>
+                                        <li> <a href="{{ path('app_logout') }}" class="btn btn-danger btn-flat ">Çıkış Yap</a></li>
+                                    </ul>
+                                </li>
+
+                            {% endif %}
+                        {% else %}
+
+                            <li ><a href="{{ path('app_login') }}">Giris Yap</a></li>
+                            <li ><a href="{{ path('kaydol') }}">Üye Ol</a></li>
+
+                        {% endif %}
+                        <li><a href=""> <img src="../images/b.png" width="200" height="70"  /></a>
+
+                            <ul>
+                                <li><a href="{{path('hakkimizda')}}">Hakkımızda</a></li>
+                                <li><a href="{{path('iletisim')}}">İletişim</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- ################################################################################################ -->
+            </header>
+        </header>
+    </div>
+    <div class="wrapper row2">
+        <div id="breadcrumb" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <ul>
+                <li><a href="/userekrani">Home</a></li>
+                <li><a href="/YurtBUL">Yurtlar</a></li>
+
+            </ul>
+            <!-- ################################################################################################ -->
+        </div>
+    </div>
+</div>
+    <!-- ################################################################################################ -->
+
+
+{{ include("yurt_YurtBUL/detay.html.twig") }}
+
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- Footer Background Image Wrapper -->
+<div class="bgded overlay" style="background-image: url('https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/07/26/Pictures/_60b7ed1a-90ec-11e8-90d0-8f805b857cc7.jpg');">
+    <!-- ################################################################################################ -->
+    <div class="wrapper row4">
+        <footer id="footer" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <div class="btmspace-50 center">
+                <h2 class="heading">BOGUCO </h2>
+
+            </div>
+            <ul class="">
+                <ul class="nospace group">
+                    <li class="one_quarter first">
+                        <div class="infobox">
+                        </div>
+                    </li>
+
+                    <li class="one_quarter ">
+                        <div class="infobox"><i class="fa fa-support"></i>
+                            <ul class="nospace">
+                                <li><a href="{{path('hakkimizda')}}">Hakkımızda</a></li>
+                                <p>Firma Olarak Biz</p>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="one_quarter">
+                        <div class="infobox"><i class="fa fa-envelope-o"></i>
+                            <ul class="nospace">
+                                <li><a href="{{path('iletisim')}}">İletişim</a></li>
+                                <p>Bize Ulaşın</p>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="one_quarter">
+                        <div class="infobox">
+
+                        </div>
+                    </li>
+
+                </ul>
+            </ul>
+            <!-- ################################################################################################ -->
+        </footer>
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <nav class="quicklinks row4">
+        <ul class="hoc clear">
+            <li>{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if is_granted(expression( '"ROLE_USER" in roles')) %}
+                        <a href="/userekrani"><i class="fa fa-lg fa-home"></i></a>
+                    {% elseif is_granted(expression( '"ROLE_ADMIN" in roles')) %}
+                        <a href="/front"><i class="fa fa-lg fa-home"></i></a>
+                    {% elseif is_granted(expression( '"ROLE_YURT" in roles')) %}
+                        <a href="/yurtekrani"><i class="fa fa-lg fa-home"></i></a>
+                    {% endif %}
+                {% else %}
+                    <a href="/front"><i class="fa fa-lg fa-home"></i></a>
+                {% endif %}</li>
+            <li><a href="/YurtBUL">Yurtlar</a></li>
+            <li><a href="{{ path('app_login') }}">Giriş</a></li>
+            <li><a href="{{ path('kaydol') }}">Üye Ol</a></li>
+
+        </ul>
+    </nav>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <div class="wrapper row5">
+        <div id="copyright" class="hoc clear">
+            <!-- ################################################################################################ -->
+
+            <!-- ################################################################################################ -->
+        </div>
+    </div>
+    <!-- ################################################################################################ -->
+</div>
+<!-- End Footer Background Image Wrapper -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="../layout/scripts/jquery.min.js"></script>
+<script src="../layout/scripts/jquery.backtotop.js"></script>
+<script src="../layout/scripts/jquery.mobilemenu.js"></script>
+<script src="../layout/scripts/js/jquery.js"></script>
+<script src="../layout/scripts/js/price-range.js"></script>
+<script src="../layout/scripts/js/jquery.scrollUp.min.js"></script>
+<script src="../layout/scripts/js/bootstrap.min.js"></script>
+<script src="../layout/scripts/js/jquery.prettyPhoto.js"></script>
+<script src="../js/bootstrap.min3.js"></script>
+<script src="../js/bootstrap3.js"></script>
+<script src="../js/jquery.easing-1.3.min3.js"></script>
+<script src="../js/jquery.scrollTo-1.4.3.1-min3.js"></script>
+<script src="../js/jquery3.js"></script>
+<script src="../js/shop3.js"></script>
+</body>
+</html>
+

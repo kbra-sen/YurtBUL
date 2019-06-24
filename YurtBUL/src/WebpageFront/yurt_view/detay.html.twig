@@ -1,0 +1,288 @@
+<!-- http://www.menucool.com/vertical/vertical-menu-->
+<style>
+
+    .button4[type=submit] {
+        border-radius:12px;
+    }
+</style>
+<style>
+
+    ul#menu-v, #menu-v ul
+    {
+        width:200px; /* Main Menu width */
+        border:1px solid rgba(190,190,190,0.3);
+        list-style:none; margin:0; padding:0;
+        z-index:9;
+    }
+
+    #menu-v li
+    {
+        margin:0;padding:0;
+        position:relative;
+        background-color:#DDDDDD; /*fallback color*/
+        background-color:rgba(0,0,0,0.5);
+        transition:background 0.5s;
+    }
+    #menu-v li:hover
+    {
+        background-color:rgba(0,0,0,0.9);
+    }
+
+    #menu-v a
+    {
+        font:normal 12px Arial;
+        border-top:1px solid rgba(190,190,190,0.3);
+        display:block;
+        color:#EEEEEE;
+        text-decoration:none;
+        line-height:30px;
+        padding-left:22px;
+        position:relative;
+    }
+
+    #menu-v li:first-child a
+    {
+        border-top:0;
+    }
+
+    #menu-v a.arrow::after{
+        content:'';
+        position:absolute;
+        display:inline;
+        top:50%;
+        margin-top:-4px;
+        right:8px;
+        border-width:4px;
+        border-style:solid;
+        border-color:transparent transparent transparent white;
+        transition:border-color 0.5s;
+    }
+
+    #menu-v li a.arrow:hover::after
+    {
+        border-color:transparent transparent transparent #CCCCCC;
+    }
+
+    /*Sub level menu items
+    ---------------------------------------*/
+    #menu-v li ul
+    {
+        min-width:180px; /* Sub level menu min width */
+        position:absolute;
+        display:none;
+        left:100%;
+        top:50%; transform:translateY(-50%);
+    }
+
+    #menu-v li:hover > ul
+    {
+        display:block;
+    }
+</style>
+
+<div class="row">
+    <div id="sidebar" class="span4">
+        <br><br><br>
+        <h2 class="title text-center">Kategori</h2>
+        <ul class="nav nav-list">
+            <div class="panel-group category-products" id="accordian" align="center"><!--category-productsr-->
+
+                {% for cat in cats %}
+                    {{ cat|raw }}
+                {% endfor %}
+            </div>
+        </ul>
+
+
+    </div>
+
+    <div class="span9">
+        <br><br><br>
+        {% for cat in totalcate %}
+        {% if(yurts[0].categoryid== cat.id) %}
+            <h2 class="title text-center"> {{ cat.title }}</h2>
+        {% endif %}
+        {% endfor %}
+        <div class="well well-small">
+            <div class="row-fluid">
+                <div class="span8" >
+                    <div id="myCarousel" class="carousel slide cntr">
+                        <div class="carousel-inner">
+                            <div class="item active" >
+                                <a href="">  <img src="{{asset('guncelleme')}}/image/{{ yurts[0].image }}" class="container" ><br></a>
+                            </div>
+                            {% for rs in resim %}
+                                <div class="item" >
+                                    <a href="#"> <img src="{{asset('guncelleme')}}/image/{{ rs.image }}"  class="container"></a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                    </div>
+                </div>
+                <div class="span4">
+                    <form action="{{ path('favorilerim_new') }}" name="favorilerim" method="post">
+                        <h3 align="center">{{ yurts[0].title }}</h3>
+                        <hr class="soft"/>
+                        <div class="tab-pane fade active in" id="home">
+                            <td>Fiyat</td>
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+
+                                    <td scope="col" class="border-0">  {{ yurts[0].fiyat }} TL </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="tab-pane fade active in" id="home">
+                            <td >  Sehir </td>
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+
+                                    {% for sehirs in sehir %}
+                                        {% if(yurts[0].sehirid == sehirs.id) %}
+
+                                            <td scope="col" class="border-0"> {{ sehirs.title }} </td>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade active in" id="home">
+                            <td >  İlçe </td>
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    {% for ilces in ilce %}
+                                        {% if(yurts[0].ilce == ilces.id) %}
+                                            <td scope="col" class="border-0"> {{ ilces.title }}  </td>
+                                        {% endif %}
+                                    {% endfor %}
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade active in" id="home">
+                            <td >  Website </td>
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <td> <a href="{{yurts[0].webpage }}"> {{yurts[0].webpage }}</a></td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <input type="hidden" name="favorilerim[yurtid]" value="{{ yurts[0].id }}">
+                        <input type="hidden" name="token" value="{{ csrf_token('add-item') }}" />
+
+                        {% if is_granted(expression( '"ROLE_USER" in roles')) %}
+                            <button type="submit"  class="button button4 "> <img src="../images/begeni.png" width="200" height="70"  /></button>
+                            Favorilerime Ekle
+                        {% elseif is_granted(expression( '"ROLE_ADMIN" in roles')) %}
+
+                        {% elseif is_granted(expression( '"ROLE_YURT" in roles')) %}
+
+                        {% endif %}
+
+                    </form>
+                </div>
+            </div>
+
+            <ul id="productDetail" class="nav nav-tabs">
+                <li class="active"><a href="" data-toggle="tab">Detaylar</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content tabWrapper">
+                <div class="tab-pane fade active in" id="home">
+
+                    <p>{{ yurts[0].aciklama|raw }}</p>
+                </div>
+
+            </div>
+
+        </div>
+        <div id="comments">
+            <h2>Yorumlar</h2>
+
+            <ul>
+
+                {% for yorum in yorumlar %}
+                    {%  if(yurts[0].id == yorum.yurtid) %}
+                <li>
+                    <article>
+                        <header>
+                            <figure class="avatar"><img src="../images/demo/avatar.png" alt=""></figure>
+                            <address>
+                                {% for user in userad %}
+                                    {% if(user.id== yorum.userid) %}
+                                        <h6 class="heading">{{ user.name }}</h6>
+                                    {% endif %}
+                                {% endfor %}
+
+                            </address>
+                            <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
+                        </header>
+                        <div class="comcont">
+                            <p>{{yorum.aciklama}}&hellip;</p>  </div>
+                    </article>
+                </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% if is_granted(expression( '"ROLE_USER" in roles')) %}
+                <h2>Yorum Yaz</h2>
+                {{ include('admin/mesaj.html.twig') }}
+                <form action="/usermesaj/{{ yurts[0].id }}" method="post">
+
+                    <div class="block clear">
+                        <textarea name="yorum"  cols="25" rows="10"></textarea>
+                    </div>
+                    <div>
+                        <input type="submit" name="submit" value="Gönder">
+
+                    </div>
+                </form>
+            {% elseif is_granted(expression( '"ROLE_ADMIN" in roles')) %}
+
+            {% elseif is_granted(expression( '"ROLE_YURT" in roles')) %}
+
+            {% endif %}
+
+        </div>
+        <!-- ################################################################################################ -->
+    </div>
+    </div>
+</div> <!-- Body wrapper -->
+
+<script type="text/javascript" >
+
+    $(document).ready(function () {
+
+        $("#il").change(function () {
+            var ilid=$(this).val();
+            var tur = $('[name="tur"]:radio:checked').val();
+
+
+
+            $.ajax({
+
+                type:"POST",
+                url:'/ilceler',
+
+                data:{'il': ilid},
+                success:function (e) {
+                    $("#ilce").show();
+                    $("#ilce").html(e);
+
+                }
+
+            })
+        })
+    })
+</script>

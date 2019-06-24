@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="YurtBULport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset ('admin') }}/images/favicon.png">
+    <title> Admin Panel</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset ('admin') }}/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="{{ asset ('admin') }}/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <!-- toast CSS -->
+    <link href="{{ asset ('admin') }}/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <!-- morris CSS -->
+    <link href="{{ asset ('admin') }}/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- chartist CSS -->
+    <link href="{{ asset ('admin') }}/bower_components/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="{{ asset ('admin') }}/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="{{ asset ('admin') }}/css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ asset ('admin') }}/css/style.css" rel="stylesheet">
+    <link href="{{ asset ('admin') }}/css/tab.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="{{ asset ('admin') }}/css/colors/default.css" id="theme" rel="stylesheet">
+
+    <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+
+    <link rel="stylesheet" href="{{ asset ('admin') }}/css/style1.css" media="screen" type="text/css" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you YurtBUL the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <SCRIPT LANGUAGE="JavaScript">
+
+        function openWin(URL) {
+            aWindow = window.open(URL,"composerwindow","toolbar=no,width=1000, height=500,status=no,scrollbars=yes,resize=no,menubar=no");
+        }
+    </SCRIPT>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
+
+</head>
+
+<body class="fix-header">
+<!-- ============================================================== -->
+<!-- Preloader -->
+<!-- ============================================================== -->
+<div class="preloader">
+    <svg class="circular" YurtBULBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+    </svg>
+</div>
+<!-- ============================================================== -->
+<!-- Wrapper -->
+<!-- ============================================================== -->
+<div id="wrapper">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <nav class="navbar navbar-default navbar-static-top m-b-0">
+        <div class="navbar-header">
+            <div class="top-left-part">
+                <!-- Logo -->
+                <a class="logo" href="index.html">
+                    <b>
+                        <img src="{{ asset ('admin') }}/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="{{ asset ('admin') }}/images/admin-logo-dark.png" alt="home" class="light-logo" />
+                    </b>
+                    <!-- Logo text image you can use text also --><span class="hidden-xs">
+                        <!--This is dark logo text--><img src="{{ asset ('admin') }}/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="{{ asset ('admin') }}/images/admin-text-dark.png" alt="home" class="light-logo" />
+                     </span> </a>
+            </div>
+            <!-- /Logo -->
+            <ul class="nav navbar-top-links navbar-right pull-right">
+                <li>
+                    <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
+                        <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
+                </li>
+
+
+                <li ><a  data-toggle="dropdown" class="profile-pic" href="#"> <img src="/images/kisi1.png" alt="user-img" width="30" class="img-circle"><b class="hidden-xs">{{app.user.name }}</b></a>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                        <div class="dropdown-menu">
+                            <div class="login-card"  >
+
+                                <h1 align="center">{{ app.user.name}}</h1><br>
+                                <form>
+                                    <a href="" class="btn btn-danger btn-flat pull-left ">Profil</a>
+                                    <a href="{{ path('app_logout') }}" class="btn btn-info btn-flat pull-right ">Çıkış Yap</a>
+                                </form>
+
+                            </div>
+                        </div>
+                    {% else %}
+                        Login olunmadı.
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+    <!-- End Top Navigation -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav slimscrollsidebar">
+            <div class="sidebar-head">
+                <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span class="hide-menu">Navigation</span></h3>
+            </div>
+            <ul class="nav" id="side-menu">
+                <li style="padding: 70px 0 0;">
+                    <a href="/admin" class="waves-effect"><i class="fa fa-coffee fa-fw" aria-hidden="true"></i>Anasayfa</a>
+                </li>
+                <li >
+                    <a href="{{url('admin')}}/yurt" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>  Yurt İlanları</a>
+                </li>
+                <li >
+                    <a href="{{url('admin')}}/yurt/onay/bekleyen" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> Onay Bekleyen Yurtlar İlanları</a>
+                </li>
+                <li>
+                    <a href="{{url('admin')}}/yurt/sahibi" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Yurt Sahipleri</a>
+                </li>
+
+                <li>
+                    <a href="{{url('admin')}}/category" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Kategoriler</a>
+                </li>
+                <li>
+                    <a href="{{url('admin')}}/iletisim/mesaj" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Mesajlar</a>
+                </li>
+                <li>
+                    <a href="{{url('admin')}}/user" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Üyeler</a>
+                </li>
+                <li>
+                    <a href="{{url('admin')}}/ayarlar" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Ayarlar</a>
+                </li>
+
+            </ul>
+            <div class="center p-20">
+                <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank" class="btn btn-danger btn-block waves-effect waves-light">Upgrade to Pro</a>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page Content -->
+    <!-- ============================================================== -->
+    {% block content %}{% endblock %}
+
+    <!-- ============================================================== -->
+    <!-- End Page Content -->
+    <!-- ============================================================== -->
+</div>
+<!-- /#wrapper -->
+<!-- jQuery -->
+<script src="{{ asset ('admin') }}/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset ('admin') }}/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Menu Plugin JavaScript -->
+<script src="{{ asset ('admin') }}/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+<!--slimscroll JavaScript -->
+<script src="{{ asset ('admin') }}/js/jquery.slimscroll.js"></script>
+<!--Wave Effects -->
+<script src="{{ asset ('admin') }}/js/waves.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="{{ asset ('admin') }}/js/custom.min.js"></script>
+<script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>
+{% block javascripts %}{% endblock %}
+</body>
+
+</html>

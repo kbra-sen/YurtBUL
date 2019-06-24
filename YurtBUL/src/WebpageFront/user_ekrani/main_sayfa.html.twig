@@ -1,0 +1,62 @@
+<link href="../layout/styles/form-wrapper cf.css" rel="stylesheet" type="text/css" media="all">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <!-- ################################################################################################ -->
+<form class="form-wrapper cf">
+    <input type="text" placeholder="Yurt/Apart,Şehir veya Bölge adı girin..." required>
+    <button type="submit">ARA</button>
+</form>
+
+<div class="style">
+
+    <div class="style">
+        {% for slider in sliders %}
+
+            <div class="mySlides fade">
+                <a href="{{ path('category', {'catid': slider.id})}}">
+                    <img src="{{asset('guncelleme')}}/image/{{ slider.image }}" style="width: 2500px; height:400px">
+                </a>
+                            {#
+                             {% for slider in sliders %}
+                         {%  for image in imagelist %}
+                             {% if(slider.id == image.yurtid) %}
+                            <div class="carousel-caption">
+                                 <h4>{{ slider.title }}</h4>
+                                 <p><span>{{ slider.aciklama }}</span></p>#}
+            </div>
+        {% endfor %}
+    </div>
+
+
+    </div>
+
+
+    <div style="text-align:center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+    <script>
+        var slideIndex = 0;
+        showSlides();
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex> slides.length) {slideIndex = 1}
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 3000); // Bu alandan resimlerin geçiş süresini değiştirebilirsiniz.
+        }
+    </script>
+    <!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+</div>

@@ -1,0 +1,13 @@
+
+
+
+<h1>Yeni Fotoğraf Ekle</h1>
+
+{{ include('yurt_image/_form.html.twig') }}
+
+{% for image in imagelist %}
+    <img src="{{asset('guncelleme')}}/image/{{ image.image }}" height="200" >
+
+
+{% endfor %}
+

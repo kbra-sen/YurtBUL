@@ -1,0 +1,124 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+{{ include('admin/mesaj.html.twig') }}
+<div class="w3-container" >
+
+    <div class="w3-bar w3">
+        <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'tab1')">Genel Bilgiler</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'tab2')">Email Server</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'tab3')">Hakkımızda</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'tab4')">İletişim</button>
+
+    </div>
+    <form  method="post">
+        <div id="tab1" class="w2-container w2-border city">
+            <br>
+            <div class="form-group">
+                <label for="">Ad</label>
+                <input type="ad" name="ayarlar[title]" class="form-control" placeholder="{{ ayarlar.title }}" >
+            </div>
+            <div class="form-group">
+                <label for="">Açıklama</label>
+                <input type="ad" name="ayarlar[description]" class="form-control" placeholder="{{ ayarlar.description }}">
+            </div>
+            <div class="form-group">
+                <label for="">Anahtar Kelimeler</label>
+                <input type="ad" name="ayarlar[keywords]" class="form-control"  placeholder="{{ ayarlar.keywords }}">
+            </div>
+            <div class="form-group">
+                <label for="">Firma </label>
+                <input type="ad" name="ayarlar[company]" class="form-control"  placeholder="{{ ayarlar.company }}">
+            </div>
+            <div class="form-group">
+                <label for="">Adres</label>
+                <input type="ad" name="ayarlar[adress]" class="form-control" placeholder="{{ ayarlar.adress}}" >
+            </div>
+            <div class="form-group">
+                <label for="">Fax</label>
+                <input type="ad" name="ayarlar[fax]" class="form-control"  placeholder="{{ ayarlar.fax }}"></div>
+
+
+        </div>
+
+        <div id="tab2" class="w1-container w1-border city" style="display:none">
+
+            <div class="form-group">
+                <br>
+                <label for="">EmailServer</label>
+                <input type="ad" name="ayarlar[smtpserver]" placeholder="{{ ayarlar.smtpserver }}" class="form-control" >
+            </div>
+            <div class="form-group">
+                <label for="">Email</label>
+                <input type="ad" name="ayarlar[smtpemail]" placeholder="{{ ayarlar.smtpemail }}"class="form-control" >
+            </div>
+            <div class="form-group">
+                <label for="">Şifre</label>
+                <input type="ad" name="ayarlar[smtppassword]" placeholder="{{ ayarlar.smtppassword }}"class="form-control" >
+            </div>
+            <div class="form-group">
+                <label for="">SMPT PORT</label>
+                <input type="ad" name="ayarlar[smptport]" placeholder="{{ ayarlar.smptport }}" class="form-control" >
+            </div>
+
+        </div>
+        <div id="tab3" class="w6-container w6-border city" style="display:none">
+
+            <div class="form-group">
+                <br><br>
+                <textarea id="aboutus" type="ad" name="ayarlar[aboutus]"  >{{ ayarlar.aboutus }}</textarea>
+            </div>
+
+        </div>
+
+        <div id="tab4" class="w5-container w5-border city" style="display:none">
+            <div class="form-group">
+                <br><br>
+                <textarea  type="ad" id="contact" name="ayarlar[contact]"  >{{ ayarlar.contact }}</textarea>
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-danger  pull-right btn-sm">Kaydet</button>
+    </form>
+</div>
+
+
+
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#contact' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#aboutus' ) )
+        .catch( error => {
+            console.error( error );
+
+        } );
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#referance' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+    function openCity(evt, cityName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " w3-red";
+    }
+</script>

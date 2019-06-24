@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UserYorum{% endblock %}
+
+{% block body %}
+    <h1>UserYorum</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user_yorum.id }}</td>
+            </tr>
+            <tr>
+                <th>Userid</th>
+                <td>{{ user_yorum.userid }}</td>
+            </tr>
+            <tr>
+                <th>Aciklama</th>
+                <td>{{ user_yorum.aciklama }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_yorum_index') }}">back to list</a>
+
+    <a href="{{ path('user_yorum_edit', {'id': user_yorum.id}) }}">edit</a>
+
+    {{ include('user_yorum/_delete_form.html.twig') }}
+{% endblock %}
